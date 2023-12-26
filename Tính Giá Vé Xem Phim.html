@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính Giá Vé Xem Phim</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+<h2>Chương trình Tính Giá Vé Xem Phim</h2>
+<label for="ticketType">Chọn loại vé: </label>
+<select id="ticketType">
+  <option value="standard">Vé Thường</option>
+  <option value="vip">Vé VIP</option>
+  <option value="child">Vé Trẻ Em</option>
+</select>
+<br>
+<label for="quantity">Nhập số lượng vé: </label>
+<input type="number" id="quantity" min="1">
+<br>
+<button onclick="calculateTicketPrice()">Tính Giá Vé</button>
+<p id="result"></p>
+
+<script>
+  function calculateTicketPrice() {
+    var ticketType = document.getElementById("ticketType").value;
+    var quantity = document.getElementById("quantity").value;
+    var resultElement = document.getElementById("result");
+
+    // Kiểm tra xem số lượng vé nhập vào có hợp lệ không
+    if (quantity >= 1) {
+      // Tính giá vé dựa trên loại vé
+      var ticketPrice = 0;
+      switch (ticketType) {
+        case "standard":
+          ticketPrice = 10;
+          break;
+        case "vip":
+          ticketPrice = 20;
+          break;
+        case "child":
+          ticketPrice = 5;
+          break;
+        default:
+          break;
+      }
+
+      // Tính tổng giá vé
+      var total = ticketPrice * quantity;
+
+      resultElement.innerHTML = "Tổng giá vé là: $" + total;
+    } else {
+      resultElement.innerHTML = "Vui lòng nhập số lượng vé hợp lệ (ít nhất là 1 vé).";
+    }
+  }
+</script>
+</body>
+</html>
